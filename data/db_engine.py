@@ -17,20 +17,7 @@ metadata = MetaData()
 class Base(DeclarativeBase, AsyncAttrs):
     pass
 
-@asynccontextmanager
-async def get_async_session():
-    session = AsyncLocalSession()
-    try:
-        yield session
-    except Exception as e:
-        print(e)
-        await session.rollback() # type: ignore
-    finally:
-        await session.close() # type: ignore
-
-
-def async_session(func):
-    async def wrapper(*args, **kwargs):
-        async with get_async_session() as session:
-            return await func(session, *args, **kwargs)
-    return wrapper
+async def get_async_db():
+    async with AsyncLocalSession() as db: # type: ignore
+        yield db
+        await db.commit()

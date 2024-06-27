@@ -30,7 +30,6 @@ class Album(Base):
     title : Mapped[str] = mapped_column(String(100) ,nullable=False, default=None)
     genre : Mapped[AlbumGenre] = mapped_column(SQLEnum(AlbumGenre, name="albumgenre"), nullable=False)
     artist : Mapped[str] = mapped_column(String(100), nullable=False,default=None)
-    tracks_id : Mapped[uuid.UUID] = mapped_column(PG_UUID(as_uuid=True), ForeignKey("tracks.id"))
 
     tracks : Mapped["Tracks"] = relationship("Tracks", back_populates="album")
     records : Mapped["Records"] = relationship("Records", back_populates="album")
