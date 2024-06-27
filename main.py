@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 
+from api.user_routes import router as user_routes
 from data.db_engine import Base, engine
 from data.models import records, user
 
@@ -17,6 +18,5 @@ async def init_tables():
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
 
-@app.get("/init")
-async def init():
-    return {"msg": "initialized"}
+
+app.include_router(user_routes)
