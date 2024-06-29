@@ -9,6 +9,8 @@ class BaseUser(BaseModel):
 
 class CreateUser(BaseUser):
     password: str
+    first_name : str
+    last_name: str
 
 
 class User(BaseUser):
