@@ -31,7 +31,7 @@ class Album(Base):
     genre : Mapped[AlbumGenre] = mapped_column(SQLEnum(AlbumGenre, name="albumgenre"), nullable=False)
     artist : Mapped[str] = mapped_column(String(100), nullable=False,default=None)
 
-    tracks : Mapped["Tracks"] = relationship("Tracks", back_populates="album")
+    tracks : Mapped["Tracks"] = relationship("Tracks")
     records : Mapped["Records"] = relationship("Records", back_populates="album")
 
 

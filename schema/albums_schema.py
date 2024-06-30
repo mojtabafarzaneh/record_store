@@ -1,3 +1,5 @@
+import enum
+import uu
 import uuid
 
 from pydantic import BaseModel
@@ -10,10 +12,8 @@ class BaseAlbum(BaseModel):
 
 class CreateAlbum(BaseAlbum):
     ...
-
 class Album(BaseAlbum):
     id : uuid.UUID
-    track_id : uuid.UUID
 
     class Config:
         from_attributes = True
