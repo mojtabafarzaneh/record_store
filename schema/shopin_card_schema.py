@@ -1,25 +1,24 @@
 import uuid
 from datetime import datetime
+from xmlrpc.client import boolean
 
 from pydantic import BaseModel
 from sqlalchemy import true
 
 
 class BaseCard(BaseModel):
-    price: int
-    created_at : datetime
-    updated_at : datetime
+    user_id : uuid.UUID
+    record_id : uuid.UUID
+    quantity : int
+    price: float
     is_active : bool
 
-class Create_card(BaseCard):
-    user_id : uuid.UUID
-    records_id : uuid.UUID
-    quantity : int
-
+class CreateCard(BaseCard):
+    ...
 
 class Card(BaseCard):
     id: uuid.UUID
     total_price : float
 
     class Config:
-        from_attributes = true
+        from_attributes = True
