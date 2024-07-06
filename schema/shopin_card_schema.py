@@ -7,8 +7,6 @@ from sqlalchemy import true
 
 
 class BaseCard(BaseModel):
-    user_id : uuid.UUID
-    record_id : uuid.UUID
     quantity : int
     price: float
     is_active : bool
@@ -16,9 +14,12 @@ class BaseCard(BaseModel):
 class CreateCard(BaseCard):
     ...
 
+
 class Card(BaseCard):
     id: uuid.UUID
     total_price : float
+    user_id : uuid.UUID
+    record_id : uuid.UUID
 
     class Config:
         from_attributes = True
