@@ -2,6 +2,7 @@ from fastapi import FastAPI
 
 from api.album_route import album_router
 from api.records_routes import records_router
+from api.shoping_card_routes import card_router
 from api.tracks_route import tracks_router
 from api.user_routes import router as user_routes
 from data.db_engine import Base, engine
@@ -26,3 +27,4 @@ app.include_router(user_routes)
 app.include_router(tracks_router)
 app.include_router(album_router)
 app.include_router(records_router)
+app.include_router(card_router)
