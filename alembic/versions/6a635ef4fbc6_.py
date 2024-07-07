@@ -1,8 +1,8 @@
-"""restructure the foreignkeys
+"""empty message
 
-Revision ID: cc17310014ab
-Revises: cddcbf7088a5
-Create Date: 2024-07-07 11:15:02.612059
+Revision ID: 6a635ef4fbc6
+Revises: 50007b57635c
+Create Date: 2024-07-07 14:11:23.726579
 
 """
 from typing import Sequence, Union
@@ -12,8 +12,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = 'cc17310014ab'
-down_revision: Union[str, None] = 'cddcbf7088a5'
+revision: str = '6a635ef4fbc6'
+down_revision: Union[str, None] = '50007b57635c'
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
