@@ -10,6 +10,6 @@ from schema.user_schema import CreateUser
 
 async def auth_user(db: AsyncSession, user_email: str) :
     query = select(User).where(User.email == user_email)
-    q_user = await db.execute(query)
+    q_user = await db.execute(query) # type: ignore
 
     return q_user.scalar_one_or_none()
