@@ -41,7 +41,7 @@ class Tracks(Base):
     __tablename__ = "tracks"
     id: Mapped[uuid.UUID] = mapped_column(PG_UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     title: Mapped[str] = mapped_column(String(100), nullable= False, default=None)
-    album_id: Mapped[uuid.UUID] = mapped_column(PG_UUID(as_uuid=True), ForeignKey("album.id"), default=None)
+    album_id: Mapped[uuid.UUID] = mapped_column(PG_UUID(as_uuid=True), ForeignKey("album.id"))
 
     album: Mapped[Album] = relationship("Album", back_populates="tracks")
 
@@ -50,8 +50,8 @@ class Records(Base):
     __tablename__ = "records"
     id: Mapped[uuid.UUID] = mapped_column(PG_UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
 
-    record_type : Mapped[RecordType] = mapped_column(SQLEnum(RecordType), nullable=False, default=None)
-    album_id : Mapped[uuid.UUID] = mapped_column(PG_UUID(as_uuid=True), ForeignKey("album.id"), default=None)
+    record_type : Mapped[RecordType] = mapped_column(SQLEnum(RecordType), nullable=False)
+    album_id : Mapped[uuid.UUID] = mapped_column(PG_UUID(as_uuid=True), ForeignKey("album.id"))
 
     card : Mapped[Card] = relationship("Card", back_populates="records")
     album : Mapped[Album] = relationship("Album", back_populates="records")
