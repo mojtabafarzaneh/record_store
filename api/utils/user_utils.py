@@ -27,7 +27,7 @@ async def create_user(db:AsyncSession, user:CreateUser):
     await db.refresh(user)
     return user
 
-async def get_user_by_email(db:AsyncSession, user: AuthUser):
-    query = select(User).where(User.email==user.email)
+async def get_user_by_email(db:AsyncSession, user_email: str):
+    query = select(User).where(User.email==user_email)
     result = await db.execute(query)
     return result.scalar_one_or_none()
