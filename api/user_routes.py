@@ -28,8 +28,8 @@ async def read_users(db:AsyncSession = Depends(get_async_db)):
     return db_user
 
 @router.post("/users", response_model=User)
-async def create_new_user(user: CreateUser, db: AsyncSession=Depends(get_async_db)):
-    validate_user = await get_user_by_email(db=db, user_email=user.email)
+async def create_new_user(user: CreateUser,db: AsyncSession=Depends(get_async_db)):
+    validate_user = await get_user_by_email(db=db, user_email=user.email) # type: ignore
     if validate_user:
         raise HTTPException(status_code=400, detail="user already exists")
     user = await create_user(db=db, user=user) # type: ignore

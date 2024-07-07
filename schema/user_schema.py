@@ -13,6 +13,9 @@ class CreateUser(BaseUser):
     last_name: str
 
 
+class AuthUser(BaseUser):
+    password: str
+
 class User(BaseUser):
     id: uuid.UUID
     first_name : str
